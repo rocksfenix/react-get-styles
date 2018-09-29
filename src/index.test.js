@@ -34,3 +34,12 @@ test('Get styles passing a template string ES6', () => {
   expect(box.flexDirection).toEqual('column')
   expect(box.boxShadow).toEqual('3px 1px 10px rgba(0,0,0,0.3)')
 })
+
+test('Get other styles with dash', () => {
+  const box = gs`
+  justify-content: space-space-between;
+  flex-direction: column-reverse;
+  `
+  expect(box.justifyContent).toEqual('space-space-between')
+  expect(box.flexDirection).toEqual('column-reverse')
+})
