@@ -2,15 +2,15 @@
   "name": "react-get-styles",
   "version": "0.1.0",
   "description": "Helper to get object with styles from string or template string",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:w": "jest --watchAll",
     "size": "size-limit",
     "build": "rollup -c",
-    "start": "rollup -c -w",
+    "dev": "rollup -c -w",
     "prepare": "npm run build"
   },
   "size-limit": [
@@ -28,6 +28,8 @@
   "author": "Gerardo Gallegos <puxerop@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^27.3.1",
@@ -38,11 +40,12 @@
     "enzyme": "^3.6.0",
     "jest": "^27.3.1",
     "regenerator-runtime": "^0.12.1",
-    "rollup": "^0.66.0",
+    "rollup": "^2.59.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-uglify": "^5.0.2",
     "rollup-plugin-url": "^1.4.0",
     "size-limit": "^6.0.4",
@@ -64,10 +67,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GerardoGallegos/react-get-styles.git"
+    "url": "git+https://github.com/rocksfenix/react-get-styles.git"
   },
   "bugs": {
-    "url": "https://github.com/GerardoGallegos/react-get-styles/issues"
+    "url": "https://github.com/rocksfenix/react-get-styles/issues"
   },
-  "homepage": "https://github.com/GerardoGallegos/react-get-styles#readme"
+  "homepage": "https://github.com/rocksfenix/react-get-styles#readme"
 }

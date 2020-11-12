@@ -4,7 +4,7 @@ import camelcase from 'camelcase'
  * @param {string} input - The string of with the css rules
  * @return {object} - The object with the css rules in camelcase
  */
-const reactGetStyles = (input) => {
+const reactGetStyles = (input: string) => {
   let str = input
 
   // If the string is pased such as template string gm``

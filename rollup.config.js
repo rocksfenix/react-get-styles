@@ -1,32 +1,28 @@
-import nodeResolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import babel from 'rollup-plugin-babel'
-import external from 'rollup-plugin-peer-deps-external'
-import url from 'rollup-plugin-url'
-import pkg from './package.json'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from 'rollup-plugin-typescript2';
+
+const packageJson = require('./package.json');
 
 export default {
-  input: 'src/index.js',
+  input: './src/index.ts',
   output: [
     {
-      file: pkg.main,
+      file: packageJson.main,
       format: 'cjs',
       sourcemap: true
     },
     {
-      file: pkg.module,
-      format: 'es',
+      file: packageJson.module,
+      format: 'esm',
       sourcemap: true
     }
   ],
   plugins: [
-    external(),
-    url(),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
-    }),
-    commonjs({ include: '**/node_modules/**' }),
-    nodeResolve()
+    peerDepsExternal(),
+    resolve(),
+    commonjs(),
+    typescript({ declaration: true })
   ]
 }
