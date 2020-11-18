@@ -28,6 +28,8 @@
   "author": "Gerardo Gallegos <puxerop@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "babel-core": "^6.26.3",
@@ -53,7 +55,10 @@
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
-    "camelcase": "^5.0.0"
+    "-": "^0.0.1",
+    "@babel/preset-typescript": "^7.16.0",
+    "camelcase": "^5.0.0",
+    "D": "^1.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
