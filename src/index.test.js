@@ -43,3 +43,15 @@ test('Get other styles with dash', () => {
   expect(box.justifyContent).toEqual('space-space-between')
   expect(box.flexDirection).toEqual('column-reverse')
 })
+
+
+test('Shoud be add vendor prefixes', () => {
+  const box = gs`
+  animation-duration: 200ms;
+  `
+
+  expect(box.animationDuration).toEqual('200ms')
+  expect(box.WebkitAnimationDuration).toEqual('200ms')
+  expect(box.MozAnimationDuration).toEqual('200ms')
+  expect(box.msAnimationDuration).toEqual('200ms')
+})
