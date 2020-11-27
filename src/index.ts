@@ -1,4 +1,5 @@
 import camelcase from 'camelcase'
+import { vendorSpecificProperties, prefixes } from './vendor-properties'
 
 /**
  * @param {string} input - The string of with the css rules
@@ -16,13 +17,36 @@ const reactGetStyles = (input: string) => {
     .split(/\n/gm)
     .filter(r => r.trim() !== '')
     .map(l => l.replace(';', ''))
+  
+    // console.log('lines', lines)
 
-  const linesMap = lines.map(line => {
+  let linesMap: { key: string, value: string }[] = []
+
+  lines.forEach(line => {
     const data = line.split(':')
+    const propName = camelcase(data[0].trim())
 
-    return {
-      key: camelcase(data[0].trim()),
+    linesMap.push({
+      key: propName,
+      // Check if we need to add vendor prefixes
       value: data[1].trim()
+    })
+
+    const needPrefixes = vendorSpecificProperties.find(
+      prop => prop === propName
+    )
+    // Check if we need to add vendor prefixes
+    if (needPrefixes) {
+      prefixes.forEach(prefix => {
+        const key = camelcase(prefix + '-' + propName, {
+          pascalCase: prefix !== 'ms'
+        })
+
+        linesMap.push({
+          key,
+          value: data[1].trim()
+        })
+      })
     }
   })
 
